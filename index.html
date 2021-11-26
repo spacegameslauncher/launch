@@ -4,7 +4,173 @@
 <meta charset="utf-8">
 <title> Logging In... </title>
 <link rel="shortcut icon" href="SpaceGamesIntro.gif" type="image/x-icon" />
-<link rel="stylesheet" href="style.css" type="text/css"> 
+<style> 
+@charset "utf-8";
+/* CSS Document */
+/* Scrollbar */
+
+/* width */
+::-webkit-scrollbar {
+    width: 7px;
+    background: none;
+    border-radius: 5px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: none;
+    border-radius: 10px;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+    border-radius: 10px;
+  }
+
+
+body {
+	background: black; 
+	overflow-x: hidden;
+}
+
+/* Home Page CSS */
+#UlyssesGameArtwork {
+	top: 13%; 
+	left: 2.5%; 
+	border-radius: 25px; 
+	position: absolute; 
+	z-index: 2; 
+	width: calc(80%);
+	height: calc(80%); 
+	display: none;
+}
+#SGI {
+	position: fixed;
+	top: 70%; 
+	right: -2%;
+	display: none; 
+}
+#LBG {
+	position: fixed;
+	top: 0%; 
+	left: 0%;
+	width: 100%; 
+	height: 100%;
+	display: none; 
+}
+#UGL {
+	position: absolute; 
+	z-index: 2; 
+	top: 110%; 
+	border-radius: 20px;
+	left: 2.5%; 
+	display: none; 
+}
+#UlyssesGameIcon {
+	position: absolute; 
+	z-index: 2; 
+	top: 16%;
+	left: 87%; 
+	width: calc(8%);
+	height: calc(22%); 
+	border-radius: 12px; 
+	display: none;
+}
+#Navigation {
+    display: none; 
+    background-color: #282727; 
+    width: calc(100%);
+    height: calc(8%);
+    position: fixed;
+    top: 0%;
+    left: 0%;
+	z-index: 3; 
+	box-shadow: 5px 5px 12.5px #282727;
+}
+#UlyssesGameLearnMoreButton {
+	position: absolute; 
+	z-index: 2; 
+	border: none; 
+	border-radius: 50px; 
+	color: whitesmoke;
+    font-size: 10px;
+    font-weight: bold;
+    font-variant-caps: all-petite-caps;
+	left: 84%; 
+	top: 39%; 
+	background-color: #2363FF;
+	width: calc(15%);
+	height: calc(4%); 
+	display: none;
+}
+#RandomFloatingGuy {
+	z-index: 1;
+	position: fixed; 
+	width: calc(5%);
+	height: calc(10%); 
+	top: 10%; 
+	left: 10%; 
+	animation-name: IAMFLOATING; 
+	animation-iteration-count: infinite;
+	animation-duration: 180s; 
+	display: none; 
+}
+@Keyframes IAMFLOATING {
+	0% {top: 5%; left: 10%; transform: rotate(5deg); }
+	5% {top: 14%; left: 14%;  transform: rotate(17deg);}
+	10% {top: 3%; left: 1%;  transform: rotate(10deg);}
+	15% {top: 85%; left: 43%;  transform: rotate(3deg);}
+	20% {top: 58%; left: 12%;  transform: rotate(32deg);}
+	25% {top: 99%; left: 99%;  transform: rotate(45deg);}
+	30% {top: 13%; left: 43%;  transform: rotate(21deg);}
+	35% {top: 43%; left: 3%;  transform: rotate(10deg);}
+	40% {top: 99%; left: 0%;  transform: rotate(99deg);}
+	45% {top: 0%; left: 99%;  transform: rotate(32deg);}
+	50% {top: 34%; left: 74%;  transform: rotate(45deg);}
+	55% {top: 68%; left: 78%;  transform: rotate(12deg);}
+	60% {top: 23%; left: 54%;  transform: rotate(34deg);}
+	65% {top: 45%; left: 21%;  transform: rotate(89deg);}
+	70% {top: 12%; left: 85%;  transform: rotate(12deg); }
+	75% {top: 43%; left: 68%;  transform: rotate(86deg);}
+	80% {top: 34%; left: 87%;  transform: rotate(54deg);}
+	85% {top: 12%; left: 12%;  transform: rotate(21deg);}
+	90% {top: 45%; left: 89%;  transform: rotate(85deg);}
+	95% {top: 0%; left: 32%;  transform: rotate(50deg);}
+	99% {top: 100%; left: 100%;  transform: rotate(5deg); }
+	100% {top: 5%; left: 10%; transform: rotate(5deg); }
+}
+
+#AdvancedMenu {
+	position: fixed; 
+	z-index: 4; 
+	width: calc(4%);
+	height: calc(5%); 
+	top: 1.7%; 
+	left: 0.5%;
+	display: none; 
+}
+#WelcomeMessage {
+	position: fixed; 
+	z-index: 4; 
+	width: calc(4%);
+	height: calc(5%); 
+	top: -2.2%; 
+	left: 5%;
+	font-size: 30px;
+	font-weight: bold;
+    font-variant-caps: all-petite-caps;
+	color: white; 
+	display: none;
+}
+	
+	</style> 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
