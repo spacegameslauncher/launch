@@ -1,0 +1,213 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title> Logging In... </title>
+<link rel="shortcut icon" href="SpaceGamesIntro.gif" type="image/x-icon" />
+<link rel="stylesheet" href="style.css" type="text/css"> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</head>
+<!-- Welcome To The Developers Release of Space Games -->
+<!-- For Legal Notices View Our Terms, Conditions, And Legal Notices --> 
+<body onLoad="LogIn()">
+<!-- Images -->
+
+<!-- Home Page Images --> 
+<img id="UlyssesGameArtwork" src="UlyssesGameArtwork.jpg" width="500px" height="300px" alt="Hmmm... An error occured" onClick="LaunchUlyssesGame()">
+	
+	
+
+<img id="SGI" src="SpaceGamesIntro.gif" width="250px" height="220px" alt="Hmmm... An error occured"> 
+	
+<img id="LBG" src="LauncherBackground.jpg" width="1720px" height="1080px" alt="Hmmm... An error occured"> 
+	
+<img id="UGL" src="UlyssesGameLogo.gif" width="300px" height="500px" alt="Hmmm... An error occured" onClick="LaunchUlyssesGame()">
+	
+<img id="UlyssesGameIcon" src="UlyssesGameLogo.jpg" width="500px" height="300px" alt="Hmmm... An error occured" onClick="LaunchUlyssesGame()">
+	
+<img id="AdvancedMenu" src="AdvancedMenu.png" width="500px" height="300px" alt="Hmmm... An error occured" onClick="LaunchUlyssesGame()">
+	
+
+
+	
+<!-- Navigation -->
+<div id="Navigation"> 		
+</div>
+
+	
+<!-- Buttons --> 
+<button id="UlyssesGameLearnMoreButton"> Learn More </button>
+
+	
+<!-- Text --> 
+<p id="UlyssesAnnouncement"> The Adventures Of Ulysses Is Now Availble </p>
+	
+<!-- Random Guy That Floats Around Lol --> 
+<img id="RandomFloatingGuy" src="P2WL.gif" width="500px" height="300px" alt="Hmmm... An error occured" onClick="LaunchUlyssesGame()">
+	
+<p id="WelcomeMessage"> Welcome </p>
+	
+<script> 
+//Login Function
+//Only Triggers If You Are Not Logged In
+var BackgroundBlur = 0;
+var FullScreen = document.documentElement; 
+function LogIn() {
+var LoggedIn = localStorage.getItem("loggedin")
+if (LoggedIn === "true") {
+LoggedOn(); 
+}
+else {
+swal({
+ title: "Login", 
+  content: {
+    element: "input",
+    attributes: {
+      placeholder: "Username..."
+    },
+  },
+}).then((value) => {
+if (value === "dev111") {
+	swal({
+ title: "Login", 
+  content: {
+    element: "input",
+    attributes: {
+      placeholder: "Password...",
+		type: "Password"
+    },
+  },
+}).then((value) => {
+if (value === "securelogin") {
+localStorage.setItem("loggedin", "true"); 
+LoggedOn(); 
+}
+		else {
+swal({
+  title: "Inncorrect Password",
+  text: "Try Again In 5 Seconds",
+  icon: "error", 
+  timer: 4700
+}); 
+setTimeout(LogIn, 5000); 	
+		}
+
+	})} 
+else {
+swal({
+  title: "Inncorrect Username",
+  text: "Try Again In 3 Seconds",
+  icon: "error", 
+  timer: 2700
+}); 
+setTimeout(LogIn, 3000); 	
+	}}
+)}}; 
+function LoggedOn() { 
+swal({
+  title: "Logged In!",
+  text: "Successfully Logged You In!",
+  icon: "success",
+  button: "Go!"
+}).then((value) => {
+FullScreen.requestFullscreen(); 
+LoadLauncher(); 
+});
+} 
+	
+
+function LoadLauncher() {
+document.title = "Welcome"; 
+setTimeout(function(){setInterval(FullScreenCheck, 1);}, 1000); 
+$("#SGI").fadeIn(1);
+$("#SGI").fadeOut(500);
+$("#LBG").fadeIn(2000);
+$("#UGL").fadeIn(2000);
+$("#Navigation").fadeIn(2000);
+$("#UlyssesGameArtwork").fadeIn(2000);
+$("#UlyssesGameIcon").fadeIn(2000);
+$("#UlyssesGameLearnMoreButton").fadeIn(2000);
+$("#RandomFloatingGuy").fadeIn(2000);
+$("#WelcomeMessage").fadeIn(3000); 
+$("#WelcomeMessage").fadeOut(3000);
+$("#WelcomeMessage").fadeIn(6001);
+setTimeout(function(){setInterval(Timer, 1);}, 6000); 
+$("#AdvancedMenu").fadeIn(2000);
+	
+setInterval(backgroundfadeout, 1); 
+}
+function backgroundfadeout() {
+        if (BackgroundBlur < 10) {
+            BackgroundBlur = BackgroundBlur + 0.10;
+                } 
+        var Background = document.getElementById("LBG"); 
+        Background.style.filter = "blur(" + BackgroundBlur + "px)"; 
+    }
+	
+	
+function LaunchUlyssesGame() {
+swal({
+  title: "Hang On Tight!",
+  text: "We're processing your request!",
+  icon: "success",
+  button: "Got It!",
+  timer: 3000
+})
+}
+	
+ 
+
+function Timer() {
+var TimeHours = new Date(); 
+var Hours = TimeHours.getHours(); 
+var TimeMinutes = new Date(); 
+var Minutes = TimeMinutes.getMinutes(); 
+if (Hours > 12) {
+     Hours = Hours - 12; 
+}
+if (Minutes > 9) {
+document.getElementById("WelcomeMessage").innerHTML = Hours + ":" + Minutes; 
+}
+else {
+document.getElementById("WelcomeMessage").innerHTML = Hours + ":" + "0" + Minutes;	 } }
+
+function FullScreenCheck() {
+	if( window.innerHeight == screen.height) {
+    document.getElementById("LBG").style.zIndex = "1"; 
+}
+	else {
+		document.getElementById("LBG").style.zIndex = "7"; 
+		if (CurrentAlert) {
+			CurrentAlert = false; 
+		swal({
+  title: "Quit Space Games Launcher?",
+  text: "Are You Sure You Want To Leave?",
+  icon: "warning",
+  closeOnEsc: false,
+  closeOnClickOutside: false,
+  dangerMode: true,
+  buttons: true,
+  buttons: ["Go Back", "Quit"],
+}).then((value) => {
+			if (value) {
+swal({
+title: "All Done Here!",
+  text: "This Tab May Be Closed!",
+  icon: "success",
+  button: "Got It!",
+  timer: 1000
+});
+				document.getElementById("RandomFloatingGuy").style.zIndex = "8"; 
+			}
+else {
+	FullScreen.requestFullscreen(); 
+	setTimeout(function(){CurrentAlert = true;}, 1000); 
+}
+		}
+	)}}
+}
+var CurrentAlert = true; 		    
+</script>
+</body>
+</html>
